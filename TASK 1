@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Creative Webpage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>✨ Welcome to My Creative Space ✨</h1>
+    <h2>Exploring Web Development!</h2>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Hi there! This is my very first creative webpage where I’m learning how to use HTML, CSS, and JavaScript to bring ideas to life.</p>
+    </section>
+
+    <section class="image-showcase">
+      <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1200&q=80" alt="Nature view with mountains">
+    </section>
+
+    <section class="quote-box">
+      <blockquote>
+        “Learning never exhausts the mind. Keep building, keep coding!”<br>– Leonardo da Vinci (and every coder ever)
+      </blockquote>
+    </section>
+
+    <section class="interactive">
+      <button onclick="showAlert()">Click for a Surprise!</button>
+    </section>
+
+    <section class="links-section">
+      <h2>🔗 Useful Links</h2>
+      <ul>
+        <li><a href="https://www.freecodecamp.org/" target="_blank">FreeCodeCamp</a></li>
+        <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/" target="_blank">MDN Web Docs</a></li>
+        <li><a href="https://css-tricks.com/" target="_blank">CSS-Tricks</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>🚀 Made with love and curiosity.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #fefcea, #f1da36);
+    color: #2c3e50;
+    padding: 30px;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #e67e22;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    color: #2980b9;
+    margin-top: 10px;
+  }
+  
+  .intro {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  
+  .image-showcase img {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 15px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .quote-box {
+    background-color: #fff3cd;
+    border-left: 5px solid #f0ad4e;
+    padding: 20px;
+    max-width: 700px;
+    margin: 30px auto;
+    font-style: italic;
+    border-radius: 10px;
+  }
+  
+  .interactive {
+    text-align: center;
+    margin: 40px 0;
+  }
+  
+  button {
+    background-color: #16a085;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #1abc9c;
+  }
+  
+  footer {
+    text-align: center;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  /* Link Section Styles */
+  .links-section {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .links-section h2 {
+    margin-bottom: 20px;
+    color: #34495e;
+  }
+  
+  .links-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .links-section li {
+    margin: 15px 0;
+  }
+  
+  .links-section a {
+    text-decoration: none;
+    color: #2c3e50;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .links-section a:hover {
+    color: #e67e22;
+    text-shadow: 1px 1px 5px #f8c291;
+  }
+
+function showAlert() {
+    alert("🎉 You're doing great! Keep learning and building cool stuff!");
+  }
+  
+
+
