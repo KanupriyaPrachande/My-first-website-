@@ -1,0 +1,299 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyShop - Products</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🛒 MyShop</h1>
+    <nav>
+      <a href="index.html">Products</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="filters">
+      <h2>Filter Products</h2>
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="clothing">Clothing</option>
+        <option value="electronics">Electronics</option>
+      </select>
+
+      <select id="sortPrice">
+        <option value="default">Sort by Price</option>
+        <option value="low">Low to High</option>
+        <option value="high">High to Low</option>
+      </select>
+    </section>
+
+    <section class="product-list">
+      <h2>Our Products</h2>
+      <div id="products" class="products"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyShop - Cart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🛒 MyShop</h1>
+    <nav>
+      <a href="index.html">Products</a>
+      <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Your Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+    <h3>Total: $<span id="cartTotal">0.00</span></h3>
+    <button id="clearCart">Clear Cart</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 MyShop. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+syle css
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f6f9fc;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(45deg, #00b4d8, #0077b6);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header nav a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.filters {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.filters select {
+  padding: 8px;
+  margin: 0 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product-card h3 { margin: 15px 0 5px; }
+
+.product-card p { color: #0077b6; font-weight: bold; margin-bottom: 10px; }
+
+.product-card button {
+  background: #0096c7;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.product-card button:hover { background: #005f73; }
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+footer {
+  text-align: center;
+  background: #0077b6;
+  color: #fff;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+button#clearCart {
+  background: #e63946;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+script.js
+
+// sample products
+const products = [
+  { id: 1, name: "T-Shirt", category: "clothing", price: 19.99, image: "https://via.placeholder.com/200?text=T-Shirt" },
+  { id: 2, name: "Headphones", category: "electronics", price: 49.99, image: "https://via.placeholder.com/200?text=Headphones" },
+  { id: 3, name: "Jeans", category: "clothing", price: 39.99, image: "https://via.placeholder.com/200?text=Jeans" },
+  { id: 4, name: "Smartwatch", category: "electronics", price: 89.99, image: "https://via.placeholder.com/200?text=Smartwatch" },
+];
+
+// show cart count
+function updateCartCount() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  document.querySelectorAll("#cart-count").forEach(span => span.innerText = cart.length);
+}
+
+// add to cart
+function addToCart(productId) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const product = products.find(p => p.id === productId);
+  cart.push(product);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+  alert(`${product.name} added to cart!`);
+}
+
+// render products
+function renderProducts(productList = products) {
+  const container = document.getElementById("products");
+  if (!container) return;
+  container.innerHTML = "";
+  productList.forEach(prod => {
+    container.innerHTML += `
+      <div class="product-card">
+        <img src="${prod.image}" alt="${prod.name}">
+        <h3>${prod.name}</h3>
+        <p>$${prod.price.toFixed(2)}</p>
+        <button onclick="addToCart(${prod.id})">Add to Cart</button>
+      </div>
+    `;
+  });
+}
+
+// filter & sort
+if (document.getElementById("categoryFilter")) {
+  document.getElementById("categoryFilter").addEventListener("change", () => {
+    let category = document.getElementById("categoryFilter").value;
+    let filtered = category === "all" ? products : products.filter(p => p.category === category);
+    renderProducts(filtered);
+  });
+
+  document.getElementById("sortPrice").addEventListener("change", () => {
+    let sorted = [...products];
+    let sortVal = document.getElementById("sortPrice").value;
+    if (sortVal === "low") sorted.sort((a,b) => a.price - b.price);
+    if (sortVal === "high") sorted.sort((a,b) => b.price - a.price);
+    renderProducts(sorted);
+  });
+}
+
+// render cart page
+function renderCartItems() {
+  const container = document.getElementById("cartItems");
+  const totalEl = document.getElementById("cartTotal");
+  if (!container) return;
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let total = 0;
+  container.innerHTML = "";
+  cart.forEach((item, index) => {
+    total += item.price;
+    container.innerHTML += `
+      <div class="cart-item">
+        <span>${item.name} - $${item.price.toFixed(2)}</span>
+        <button onclick="removeFromCart(${index})">Remove</button>
+      </div>
+    `;
+  });
+  totalEl.innerText = total.toFixed(2);
+}
+
+function removeFromCart(index) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  cart.splice(index,1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  renderCartItems();
+  updateCartCount();
+}
+
+if (document.getElementById("clearCart")) {
+  document.getElementById("clearCart").addEventListener("click", () => {
+    localStorage.removeItem("cart");
+    renderCartItems();
+    updateCartCount();
+  });
+}
+
+// INIT
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+  renderProducts();
+  renderCartItems();
+});
