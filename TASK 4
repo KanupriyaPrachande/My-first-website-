@@ -1,0 +1,378 @@
+html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Stunning Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>✨ My Portfolio ✨</h1>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hi! I'm a creative web developer who loves building beautiful, functional websites. Welcome to my world!</p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project">
+          <h3>📝 To-Do List App</h3>
+          <input type="text" id="taskInput" placeholder="Add a task and press Enter">
+          <ul id="taskList"></ul>
+        </div>
+
+        <div class="project">
+          <h3>🛍️ Product Listing</h3>
+          <div>
+            <label for="filterCategory">Filter Category:</label>
+            <select id="filterCategory">
+              <option value="all">All</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothing">Clothing</option>
+            </select>
+            <label for="sortPrice">Sort Price:</label>
+            <select id="sortPrice">
+              <option value="low">Low to High</option>
+              <option value="high">High to Low</option>
+            </select>
+          </div>
+          <div id="productList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form id="contactForm">
+        <label>Name:</label>
+        <input type="text" id="name" required>
+        <label>Email:</label>
+        <input type="email" id="email" required>
+        <label>Message:</label>
+        <textarea id="message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="formMessage"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 My Stunning Portfolio</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+style
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+  color: #333;
+}
+
+header {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: white;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+nav li {
+  margin: 0 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ffeb3b;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-top: 10px;
+}
+
+main {
+  padding: 40px;
+}
+
+h2 {
+  color: #6a11cb;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+p {
+  line-height: 1.6;
+}
+
+.project-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.project {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  flex: 1;
+  min-width: 280px;
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+}
+
+/* To-Do List Styles */
+#taskInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-family: 'Courier New', monospace;
+}
+
+#taskList {
+  list-style: none;
+  padding-left: 0;
+}
+
+#taskList li {
+  background: #e0f7fa;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+#taskList button {
+  background: #ff1744;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#taskList button:hover {
+  background: #d50000;
+}
+
+/* Product List */
+#productList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.product-item {
+  background: #fff;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Contact Form */
+form {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+form input, form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+form button {
+  background: #6a11cb;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background: #4e0ec9;
+}
+
+#formMessage {
+  margin-top: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  background: #6a11cb;
+  color: white;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+script.js
+
+
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const feedback = document.getElementById("formMessage");
+
+  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+  if (!name || !email || !message) {
+    feedback.textContent = "⚠️ Please fill all fields.";
+    feedback.style.color = "red";
+  } else if (!emailPattern.test(email)) {
+    feedback.textContent = "⚠️ Invalid email format.";
+    feedback.style.color = "red";
+  } else {
+    feedback.textContent = "✅ Message sent successfully!";
+    feedback.style.color = "green";
+    this.reset();
+  }
+});
+
+// === To-Do List with Local Storage ===
+const taskInput = document.getElementById("taskInput");
+const taskList = document.getElementById("taskList");
+
+document.addEventListener("DOMContentLoaded", loadTasks);
+
+taskInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter" && taskInput.value.trim() !== "") {
+    addTask(taskInput.value.trim());
+    taskInput.value = "";
+  }
+});
+
+function addTask(task) {
+  const li = document.createElement("li");
+  li.textContent = task;
+
+  const delBtn = document.createElement("button");
+  delBtn.textContent = "❌";
+  delBtn.onclick = () => {
+    taskList.removeChild(li);
+    saveTasks();
+  };
+
+  li.appendChild(delBtn);
+  taskList.appendChild(li);
+  saveTasks();
+}
+
+function saveTasks() {
+  const tasks = [];
+  taskList.querySelectorAll("li").forEach(li => {
+    tasks.push(li.firstChild.textContent);
+  });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks.forEach(task => addTask(task));
+}
+
+// === Product Listing with Filtering & Sorting ===
+const products = [
+  { name: "Laptop", category: "electronics", price: 800 },
+  { name: "T-Shirt", category: "clothing", price: 20 },
+  { name: "Smartphone", category: "electronics", price: 500 },
+  { name: "Jeans", category: "clothing", price: 40 },
+  { name: "Headphones", category: "electronics", price: 100 }
+];
+
+const productList = document.getElementById("productList");
+const filterCategory = document.getElementById("filterCategory");
+const sortPrice = document.getElementById("sortPrice");
+
+function renderProducts(filteredProducts) {
+  productList.innerHTML = "";
+  filteredProducts.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "product-item";
+    div.textContent = `${p.name} - $${p.price}`;
+    productList.appendChild(div);
+  });
+}
+
+function filterAndSort() {
+  let filtered = products.filter(p => 
+    filterCategory.value === "all" || p.category === filterCategory.value
+  );
+  
+  if (sortPrice.value === "low") {
+    filtered.sort((a,b) => a.price - b.price);
+  } else if (sortPrice.value === "high") {
+    filtered.sort((a,b) => b.price - a.price);
+  }
+
+  renderProducts(filtered);
+}
+
+filterCategory.addEventListener("change", filterAndSort);
+sortPrice.addEventListener("change", filterAndSort);
+
+document.addEventListener("DOMContentLoaded", filterAndSort);
